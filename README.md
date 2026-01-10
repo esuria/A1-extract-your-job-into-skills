@@ -4,7 +4,7 @@ A collection of 4 focused, reusable Claude Code skills that automate repetitive 
 
 ## Overview
 
-These skills were extracted from real Engineering Manager. Each skill targets a specific, high-frequency task that consumes mental energy and time.
+These skills were extracted from a real Engineering Manager's workflow. Each skill targets a specific, high-frequency task that consumes mental energy and time.
 
 | Skill | Replaces | Time Saved | Frequency |
 |-------|----------|------------|-----------|
@@ -220,11 +220,16 @@ Applicable roles:
 ```
 A1-extract-your-job-into-skills/
 ├── README.md                    # This file
-├── artifacts/
+├── logs/
 │   ├── 01-job-description.md    # Original role description
 │   ├── 02-work-analysis.md      # Analysis of automation opportunities
 │   ├── 03-skill-demos.md        # Skill demonstrations
 │   └── 04-assignment-summary.md # Assignment summary
+├── demo/
+│   ├── sample-meeting-transcript.txt  # Sample meeting transcript input
+│   ├── meeting-minutes-2026-01-06.md  # Generated meeting minutes output
+│   ├── lawpay-draft.md                # Sample JIRA ticket input
+│   └── lawpay-jira-ticket.md          # Generated JIRA ticket output
 └── .claude/
     └── skills/
         ├── meeting-to-minutes/
