@@ -1,0 +1,1035 @@
+TS Migration - Product Feedback-20260106_170841-Meeting Recording 
+
+January 6, 2026, 12:08PM 
+
+47m 17s 
+
+ 
+Emad Suria started transcription 
+
+ 
+Emad Suria   0:04 
+OK, I think let's put that comment on the sheet, Shahid. 
+
+ 
+Shahid Ali   0:21 
+OK, what do you decide? 
+
+ 
+Emad Suria   0:28 
+Next Gen. does not have lockout feature. 
+Time can be entered for all dates. 
+
+ 
+Shahid Ali   0:51 
+OK. The next thing is an incremental billing time unit attribute in the next Gen. So same kind of functionality we have in time that if we mention billing increment then. 
+You have to. 
+And then user if enters the time less than that a specified time that will be updated and this incremental time will be charged. So that is a minimum time unit. 
+
+ 
+Ravi Jani   1:19 
+That's a minimum timer unit, but it only applies when you use the timer. So let's say if you say your minimum timer unit is 10 minute, then it would be based on the 10 minute interval, right? So if you have a run timer for six minutes, you will still. 
+Bill 10 minutes. If you have a run timer for 13 minutes, then it will bill for 20. That's how the minimum timer unit will work. 
+
+ 
+Shoaib Mehmood   2:04 
+which is similar to how tinesol works. 
+
+ 
+Shahid Ali   2:44 
+I think we have for both for timer and for fixed. 
+Be like. 
+OK, let's be. 
+It will I will just but I I recall that we have for both for a timer and for the fixed or if we put it value put the value. 
+Like if I make it 3 hour right? Sorry one hour. 
+Hello 2 hours is saved right? I think the same scenario is with the timer. 
+
+ 
+Ravi Jani   3:46 
+Yeah, but see, in our time card you have two fields. One would be that time spent versus the time build. If you enter your time directly in the time build as any amount, then it's not going to look for your minimum time or unit. The only time we convert that's based on the time spent. 
+
+ 
+Shahid Ali   3:55 
+Right. 
+
+ 
+Ravi Jani   4:06 
+So if you click on the drop down and select any value then your time build it will convert based on your minimum time unit. 
+So let's say if you, yeah, say 30 minutes and you are billing 40 because maybe your camera unit is. 
+What is the timer unit for your matter? 
+
+ 
+Shahid Ali   4:37 
+And time that needed means. 
+
+ 
+Ravi Jani   4:40 
+Yeah, can you click cancel? 
+
+ 
+Shahid Ali   4:43 
+OK. 
+
+ 
+Ravi Jani   4:43 
+Cancel here. Thank you. Your minimum timer unit is 20 minutes, right? So because of that, when you when you created the time card for 30 minutes, it's billing minimum 40 because 30's nearest value is 40. 
+
+ 
+Shahid Ali   4:48 
+Yeah. 
+40 Yeah, because 20. Yeah. 
+Oh. 
+
+ 
+Shoaib Mehmood   5:04 
+I guess that's going to happen. Even if you have entered 21 minutes, it's still going to go towards 40, right Ravi? 
+
+ 
+Ravi Jani   5:14 
+Correct. Mhm. 
+
+ 
+Shoaib Mehmood   5:16 
+OK. 
+
+ 
+Emad Suria   5:43 
+So, Shahid. 
+The minimum time unit or time increment in time solve is in hours defined in hours, so we just need to convert that into minutes and. 
+Initialize this value, right? 
+
+ 
+Shahid Ali   6:07 
+Yeah, we will check it what's underlying thing. But yeah, I think last time we checked we are storing as minutes, sorry hours, right? 
+
+ 
+Emad Suria   6:19 
+Yeah, uh, the UI also says it's in hours. 
+Go to the settings. 
+Yeah, billing increment hours, so. 
+So if you provide a decimal floating point value, so it would be also considered in hours half an hour or whatever we would like to say. 
+So the only conversion would be we have values in hours, we just need to convert that into minutes and migrate it over to next Gen. 
+Let's put that in the comments note section. 
+
+ 
+Shahid Ali   7:16 
+So we have the same kind of functionality, but we need to convert it into seconds, right? 
+
+ 
+Ravi Jani   7:24 
+I don't think so. Second is something we we, yeah, minutes. 
+
+ 
+Emad Suria   7:25 
+Minutes, minutes. 
+
+ 
+Shahid Ali   7:27 
+Anders. 
+
+ 
+Emad Suria   7:33 
+We are storing in hours and we need to provide that in minutes for next time. 
+
+ 
+Syed M Yasir   7:42 
+We split duration for time and expense as well in hours and minutes. 
+
+ 
+Shahid Ali   7:52 
+Yasir, you want to share the question or you are highlighting some point? 
+
+ 
+Emad Suria   7:55 
+Yeah. 
+
+ 
+Syed M Yasir   7:57 
+No, no, I'm just, I'm just, I'm just sharing a point. We have a similar situation when QA raised a point in time expense card migration that they are not seeing the minutes in next Gen. 
+So remember we our duration was splitted into hours and minutes for time and expense as well. So we did a similar there. 
+So a sort of thing there. 
+
+ 
+Shoaib Mehmood   8:28 
+OK. 
+
+ 
+Syed M Yasir   8:31 
+Converting our duration into hours and minutes and for next Gen. 
+
+ 
+Shahid Ali   8:58 
+Yeah, that'll be good. Should we move to next or you want to raise concern or highlight some points? 
+
+ 
+Syed M Yasir   9:06 
+No, we are good. 
+
+ 
+Shahid Ali   9:08 
+Good, OK. 
+OK, the next thing is start time and end time. So it's we just seen in the X Gen. and so this field is time spent is a configured as start time, right Ravi? 
+
+ 
+Ravi Jani   10:22 
+No, no, no, no, no. It's not a start time. We don't have a concept of start time or the end time. 
+
+ 
+Shahid Ali   10:24 
+Oh. 
+OK. 
+
+ 
+Shoaib Mehmood   10:29 
+Yeah, that's not supported. 
+
+ 
+Shahid Ali   10:31 
+So. 
+So we will. 
+
+ 
+Shoaib Mehmood   10:43 
+So Shahid, this is something I also counted for when I was creating first to hard customer list. So at least initially we will only be picking customers for migration that do not use start and stop time. 
+
+ 
+Shahid Ali   11:02 
+OK, so I. 
+Correct. 
+
+ 
+Shoaib Mehmood   11:35 
+Yes. 
+
+ 
+Shahid Ali   11:36 
+OK. 
+
+ 
+Shoaib Mehmood   11:37 
+So this will this will require an enhancement on the next inside. 
+
+ 
+Shahid Ali   11:41 
+The point set has been taken care. Should we change their type? 
+
+ 
+Emad Suria   11:47 
+Yes. 
+
+ 
+Shahid Ali   11:48 
+From product, So what we decided yesterday last time. 
+
+ 
+Emad Suria   11:54 
+This will be mapped because. 
+
+ 
+Shahid Ali   11:54 
+What? What? It should be what mapped? OK. 
+
+ 
+Emad Suria   11:58 
+It has. 
+Or you can just type your name. This cannot be mapped because we don't have a TS column name. You can just type your name and question mark. We can deal with this later on. 
+
+ 
+Shahid Ali   12:28 
+And the next thing is a. 
+In the user profile there is a a role ID and so assuming that these roles are like admin, timekeeper, attorney. These are the kind of roles but in time salve we have different concept first. 
+Roles are optional in which we have a redefined set of permissions. Otherwise our timekeepers have individual permissions and settings. So first point is are do we need to? 
+Transfer our 50 settings to the next Gen. or not shape it's regarding to you. 
+Are we going to transfer these values or not? 
+
+ 
+Shoaib Mehmood   13:23 
+This upgrade billable type. 
+
+ 
+Shahid Ali   13:28 
+Permissions, rolled and permissions. If someone have access to tiny screen or expense help the rolled and permissions. 
+
+ 
+Shoaib Mehmood   13:36 
+Next Gen. Next Gen. already has a permission system. We just need to. We just need to map our permissions to theirs and make sure that during migration to whatever extent we can, we should migrate their permission settings. 
+
+ 
+Shahid Ali   13:40 
+Yeah, they have different kind of. 
+Um. 
+
+ 
+Ravi Jani   13:54 
+So one thing about the permission to be mindful of, we don't have a separate permission for time and expense. It's a combined permission for time and expense and what we allow is you can either view, add, edit together, delete those are the. 
+Three permission you will find. So go to account section, click on your profile avatar on the top right corner and click on account. 
+And select Account Management. 
+Perfect. Uh, if you would go to the role. 
+
+ 
+Shahid Ali   14:26 
+But you have started regarding, right? 
+
+ 
+Emad Suria   14:27 
+It. 
+
+ 
+Ravi Jani   14:29 
+Yeah, it is so cool. 
+
+ 
+Emad Suria   14:29 
+Yes. 
+
+ 
+Shahid Ali   14:31 
+OK. 
+
+ 
+Ravi Jani   14:32 
+And click on add. So these are all the permissions that you will see. But for time and expense card, the one that will be important that would be under billing time and expense card. So if you do have a view permission that means you would be able to see the listing of all the time and expense card. If you have added and added that means you would be able to. 
+Create a time card and delete permission will allow you to delete the time or expense card. 
+
+ 
+Shahid Ali   14:58 
+OK, and show it it is a. 
+The thing that needs to be mapped second and there could be some properties that we don't have in times of like a like chart of account accounting, right? So what should be the values for that and? 
+
+ 
+Emad Suria   15:11 
+Correct. 
+
+ 
+Shahid Ali   15:18 
+Means the permission there are attributes that are not exist in time solve and what should be the default values for that. So either we need to decide which roles we are going to map or we are going to map a individual attributes. 
+
+ 
+Shoaib Mehmood   15:34 
+Right. So Shahid, we don't need to worry about chart of accounts, I think. I mean, we'll have to look into it in more detail. 
+
+ 
+Shahid Ali   15:41 
+That is, that is just for one reference. But what about the other things? There are a lot of permissions. 
+
+ 
+Shoaib Mehmood   15:45 
+Yeah. 
+I I think we should start with, we should first start with permissions that have a direct mapping between the two systems and then move forward with with the ones that that are not 100% clear and then we can have some discussions around. 
+How we can support those kind of permissions or whether we want to just prefer them? 
+
+ 
+Emad Suria   16:08 
+I send in the UI mapping exercise, have you mapped time solve permissions with next Gen. 
+
+ 
+Ahsan Zulfiqar   16:21 
+I think we had a discussion with Shoaib and at that time, if Shoaib remembered, Shoaib told us that in first cohort we will not be focusing on the this area. That's why I guess permission is not yet. 
+No. 
+
+ 
+Shoaib Mehmood   16:41 
+Uh. 
+I think I mean. 
+
+ 
+Ahsan Zulfiqar   16:45 
+So if I open. 
+
+ 
+Shoaib Mehmood   16:48 
+Access to assign matters and things like that. We can maybe like keep things simple permissions. I'm not too sure. I will have to look into the data like if we have sufficient number of customers that are not using permissions and we can. 
+
+ 
+Ahsan Zulfiqar   16:49 
+So. 
+
+ 
+Shoaib Mehmood   17:05 
+We can move forward without including permissions. 
+
+ 
+Ahsan Zulfiqar   17:09 
+Yeah, because Shoaib, you mentioned that we will be migrate migrating the data with full permission. That's why we left the mapping of the permission area. 
+
+ 
+Shoaib Mehmood   17:24 
+OK, that's fine. Let's let's continue with that assumption. I will take another look and let you know if we need to change things. 
+
+ 
+Ahsan Zulfiqar   17:33 
+Yeah, sure. 
+
+ 
+Shahid Ali   17:34 
+OK, so in the first quad we are not going to consider it right here. 
+
+ 
+Shoaib Mehmood   17:39 
+Yeah, I think so. 
+Essence memory is better than mine, so if I said that then yeah, you can you can hold me accountable for it. 
+
+ 
+Emad Suria   18:07 
+SN Don't misuse your trust. 
+
+ 
+Shahid Ali   18:08 
+There there one more or only we could talk at this one. 
+The next thing is. 
+Zero at the level where OK, it is mapped. 
+And time to have the forward that is also mapped. 
+OK, not test line three that is also decided regarding the test line 3, right 'cause we have some length issues, but we discussed that. 
+What we finalize regarding the address line 1, three and two merging, are we going to do it or not? Because there are these are the number of records. 
+
+ 
+Emad Suria   19:12 
+Yes, we will do it, but we will identify it during the pre migration validation if there are any data loss instances. 
+
+ 
+Shahid Ali   20:04 
+Yasir, is it already done or it is still in progress? 
+
+ 
+Syed M Yasir   20:13 
+Let me check. 
+
+ 
+Shahid Ali   20:15 
+OK. 
+
+ 
+Syed M Yasir   20:15 
+Address line 2 is done. 
+
+ 
+Shahid Ali   20:19 
+And three and two will be merged and stored into merged and done. 
+
+ 
+Syed M Yasir   20:21 
+But yes, I think that that's that's also done. But yeah, you can put, ask your question mark and I'll, I'll confirm. 
+
+ 
+Shahid Ali   20:30 
+OK. 
+
+ 
+Syed M Yasir   20:34 
+Yeah, Shahid, it's done. Yes, we merged. Yeah. The only problem was there is the length issues. So I think. 
+
+ 
+Shahid Ali   20:37 
+Done. OK. 
+When we we we will. 
+
+ 
+Syed M Yasir   20:45 
+We need to be truncated. 
+
+ 
+Shahid Ali   20:47 
+OK, we are going to truncate it or highlight it. 
+
+ 
+Emad Suria   21:00 
+Yeah, so we decided that the migration logic, if it goes ahead, it would be truncating it. So the idea of putting up a pre migration validation is to halt migration. 
+If there are any data loss identified, data loss instances identified, so we won't go ahead, but even if with the data loss information prompted by the application, if anyone wants to go ahead then. 
+They can apply a force flag for the migration and that will result in data loss. Otherwise the ideal approach or the preferred approach would be to to identify those records and modify the values. 
+In there before rerunning the migration. 
+
+ 
+Shahid Ali   21:53 
+OK. You want me to add any additional notes there or it's OK? 
+
+ 
+Emad Suria   22:07 
+Uh, pre migration validation would identify uh data loss instances even if uh. 
+We can either fix those issues or proceed. 
+With data loss. 
+
+ 
+Shahid Ali   22:45 
+OK, Ravi, on the next Gen. application we noticed there are some validations applied on some phone numbers like home, work phone and on. 
+
+ 
+Ravi Jani   22:56 
+Mhm. 
+That was due to the SMS feature because when you use the SMS feature right, the problem we were running into people enter a number with extension and all. So what we did the cell number field. 
+It must restrict you to 10 digit because we don't want any number higher than 10 so that you can actually send the message, but other fields like home number, work number that that have a higher limit. 
+
+ 
+Shahid Ali   23:29 
+OK, so in timesal we have potentially a different kind of phone numbers and we noticed that from the database query point of view we can insert the data, but from the front end it cannot be. Even then later on the data can be visible. So what is the take in that case? 
+We showed a. 
+Highlight the data or what? We are not storing it or we are what? What could be the take there? 
+
+ 
+Ravi Jani   23:59 
+I didn't follow. 
+
+ 
+Shahid Ali   24:03 
+Like a. 
+In in. 
+We could have number in this format or we could have number in different format. 
+
+ 
+Ravi Jani   24:12 
+Mm-hmm. 
+I don't think the format is a problem. It's the length, right? 
+
+ 
+Shahid Ali   24:19 
+Uh. 
+Yeah, length can also be varied, like if someone put like, so no, it will change the length, right? 
+
+ 
+Ravi Jani   24:30 
+So again for cell number, even though you push dash the we will basically eliminate the dash and the number should be 10. So that is still allowed. But I believe what if people have a country code now that could be a problematic. 
+
+ 
+Shahid Ali   24:46 
+I I'm I'm referring I I'm referring from the back end part. I'm not coming from the front end because from the front end it will be filtered right? But when Yasir is going to convert the data right so he is going to use the script. So from the scripts we can insert the data. 
+Right. So there is no restriction at that point. 
+
+ 
+Ravi Jani   25:04 
+I don't think so, but. 
+
+ 
+Emad Suria   25:05 
+So Ravi, the problem is the problem is this that we identified that when you're entering any phone number on UI. So there is a validation and formatting which it would automatically fix before it saves that into the database. So that's pretty much handled in the next Gen. 
+UI on the client side, but when we are migrating data, we are putting it directly into the what you said, database records, yeah. 
+
+ 
+Ravi Jani   25:38 
+The table. 
+
+ 
+Emad Suria   25:40 
+So should we be implementing those? 
+Data formatting logic and update the actual values that are in time solve before putting them in next Gen. Otherwise there is no restriction because those columns are alphanumeric columns so it can accept anything. 
+
+ 
+Ravi Jani   26:03 
+My only concern is that we let's test this part or let's have Pablo confirm this because if we just simply bring in with any format and then if someone tried to open a model and it basically throws an error, something happens, right? Because we have seen that happening with the rocket metal transition as well, so. 
+Somehow we will have to either test it or make sure you ask Pablo that what would be the right format that he would be able to tell you. 
+Mhm. 
+
+ 
+Emad Suria   26:31 
+Yasir, how have we implemented this? Currently we are putting phone numbers in address records, right? 
+
+ 
+Syed M Yasir   26:46 
+So I think we are directly just migrating them. 
+Values. 
+I have to check but there's no, no, no, no truncation, nothing. There's no sort of cleanup. 
+
+ 
+Emad Suria   26:56 
+And. 
+
+ 
+Shahid Ali   26:58 
+OK. 
+
+ 
+Emad Suria   27:06 
+I think they were. We identified that there are complementary columns for numeric values of those numbers. 
+Do you recall? 
+
+ 
+Syed M Yasir   27:18 
+I don't remember. No, I don't remember. Let me check the query. 
+
+ 
+Emad Suria   27:21 
+OK. Yeah. 
+OK, Shahid, let's put a comment here that we'll have to confirm that with Tableau and. 
+
+ 
+Shahid Ali   27:44 
+In just a minute. 
+I I yes, I need Pablo, right? 
+
+ 
+Emad Suria   28:13 
+OK. 
+
+ 
+Shahid Ali   28:15 
+Yeah, and that. 
+OK, and the next thing is. 
+Yeah. 
+There are some parts where we do not have any clarity so, but at the back end we notice those fields. So we just need your quick input. If you know anything that will be great. Otherwise we will. OK, let me. 
+
+ 
+Ravi Jani   29:07 
+Sure. 
+
+ 
+Shahid Ali   29:11 
+It. 
+OK, at the back end there is field called additional invoice e-mail party ID so. 
+
+ 
+Ravi Jani   29:27 
+So that is something if user can either set it up or it can be driven from the client. Remember that settings we have under matter and for invoicing at the bottom you have an option additional invoice recipient and you can add. 
+Hundreds if you want, and the purpose of that field is to send out those invoices and invoice reminders when an invoice is sent. So if you go to invoicing. 
+
+ 
+Shahid Ali   30:05 
+Right. 
+Right. 
+
+ 
+Ravi Jani   30:14 
+Basically. 
+
+ 
+Shahid Ali   30:16 
+Yeah, we we observed if a client has a additional recipient information and if we create a matter for that client then that that are inherited to the matter. 
+So there could be a a line that has that that is single line with multiple e-mail addresses. But if we add here then we have to add each record one by one, right? 
+
+ 
+Ravi Jani   30:44 
+Right. Mhm. 
+
+ 
+Shahid Ali   30:46 
+So in the concept of inheritance, yeah. 
+
+ 
+Ravi Jani   30:46 
+But even you bring in the one line, those e-mail has to be separated by comma or something so that it treat a separate e-mail address and it should show here as a separate item. 
+
+ 
+Shahid Ali   30:57 
+And they were shown a single item, but those are coma separate emails. 
+Let me show you. 
+
+ 
+Ravi Jani   31:03 
+OK. 
+
+ 
+Shahid Ali   31:07 
+That's OK. 
+Uh. 
+OK, here I have additional recipients 3 right at the client level, so I'm going to create a matter for that client. 
+
+ 
+Ravi Jani   31:25 
+OK. 
+You already did, right? That's the client. Or maybe you entered that information afterwards. 
+
+ 
+Shahid Ali   31:39 
+I I I deleted I I I deleted the. 
+
+ 
+Ravi Jani   31:43 
+OK. 
+And the three values and then you will see the prompt here. 
+
+ 
+Shahid Ali   32:02 
+OK, I'm going to save it. 
+K inviting. 
+So you see it is one line, but there are three e-mail address. 
+
+ 
+Ravi Jani   32:19 
+Yeah, that could be a problem because. 
+I think our system is considering this as one e-mail address. 
+
+ 
+Shahid Ali   32:30 
+Yeah. 
+
+ 
+Ravi Jani   32:31 
+I yeah, let me make a note of this and have our team check it because yeah, this is wrong when we it won't send an e-mail with this behavior at all. 
+OK. Let me let me just look into it. Thanks for bringing this up, Said. This is important. 
+
+ 
+Shahid Ali   32:53 
+OK, yeah, there are a lot of others that we can report it. 
+OK. 
+So this field is additional recipient, right? You're saying? 
+
+ 
+Ravi Jani   33:08 
+Mhm. 
+Yes. 
+
+ 
+Shahid Ali   33:12 
+OK. 
+Internal billing notes and in time solve and we do not have such notes at the billing level so right so that will be blank I seen somewhere OK at billing. 
+Yeah, this one, right. So this is internal billing route, right? We have. 
+
+ 
+Ravi Jani   33:48 
+Mm-hmm. 
+So the purpose of the field, yeah. So the purpose of the field was to include any information that you have there in the prebuilt report. It does not appear on invoices and things like that. It's purely to have it appear on the. 
+
+ 
+Shoaib Mehmood   33:51 
+Yeah, we don't have. 
+
+ 
+Ravi Jani   34:07 
+Prebuilt report. That's the only purpose. 
+
+ 
+Shahid Ali   34:11 
+OK, at the invoice level settings we have different kind of terminology that can be a part of e-mail notes that is called narratives. So is there anything? 
+Regard letting that in the Ng or nodes is the same kind of thing. 
+
+ 
+Ravi Jani   34:30 
+So. 
+Notes, but that's what I'm saying. Notes would not be a base place because those notes does not appear on the invoices, right? So what would be the end goal that we're trying to achieve? If the goal is to have it on the invoice, then no, it has to be in the description. 
+
+ 
+Shahid Ali   34:41 
+OK. 
+
+ 
+Ravi Jani   34:48 
+And description has to be added as part of the invoice. It cannot be like a standard description, but you can create a shorthand and the shorthand can be used. 
+While creating the invoice so the user doesn't have to type those things each time when they create the invoice. 
+
+ 
+Shahid Ali   35:11 
+OK, so and we don't need to map it. So we don't need to map it, right? Sure. 
+
+ 
+Shoaib Mehmood   35:13 
+Yeah, I think this is different. Yeah, yeah, we we we shouldn't. 
+And this is kind of a new feature for the migrating customers as we don't have a report in time cell. 
+
+ 
+Shahid Ali   35:38 
+OK, and the next is alternate contact invoice address. 
+
+ 
+Ravi Jani   35:41 
+That's again in the invoice. Remember which one you are choosing, whether you are sending or using the client associated with the matter to fetch their addresses or do you use a different contact? So that's the property. So if you go back to the invoice tab and you will see that option. 
+Um. 
+Use address. Yeah, right there. So either you use the client's information or use the other contact's information. 
+
+ 
+Shahid Ali   36:10 
+OK, so. 
+Pretty there. 
+And we have a. 
+Invice contact in time self. 
+That is. 
+Billing then. 
+Main contact. 
+OK, so we will map it with it. 
+Client primary e-mail so. 
+
+ 
+Ravi Jani   37:19 
+Same thing. If you go to the same area, you will find that option for that e-mail. Look at that the one. Yep, that's the property. If you toggle it on then it basically fetches the e-mail address from client's primary field, but you can disable it if you want. 
+
+ 
+Shahid Ali   37:25 
+This one. 
+OK, if if I don't have then it will be blank even then, right? 
+
+ 
+Ravi Jani   37:40 
+Yes, right. 
+
+ 
+Shahid Ali   37:43 
+OK, declared. 
+So. 
+In our time file, contact type main. If there is an e-mail address then we can map it here, otherwise ignore it right? Any shave. 
+
+ 
+Ravi Jani   37:58 
+Yep. 
+
+ 
+Emad Suria   38:02 
+Sorry, Shahid, can you repeat that? 
+
+ 
+Shoaib Mehmood   38:04 
+Sorry, what? 
+
+ 
+Shahid Ali   38:04 
+In timeshelp we have two type of contacts, main contact and optional building contact right? So if main if and we have main contact type right then then and if there is an e-mail then we can map it here. 
+
+ 
+Ravi Jani   38:21 
+Right. 
+
+ 
+Shahid Ali   38:23 
+Right, because we have. If we don't, then we don't need to sign it then. 
+
+ 
+Shoaib Mehmood   38:24 
+Yep. 
+
+ 
+Shahid Ali   38:35 
+So farting with it. 
+
+ 
+Emad Suria   38:38 
+But Shahid, if we have e-mail addresses for both main contact as well as optional invoice, then optional invoice gets the preference, right? 
+
+ 
+Shoaib Mehmood   38:46 
+Option invoice app. 
+
+ 
+Shahid Ali   38:51 
+They are saying primary e-mail contact because there could be any other type of contacts in next Gen. but they are only using the primary one. 
+
+ 
+Emad Suria   39:01 
+Yeah, but the way our system works and the users are are time cell users are used to this configuration that if they have, if they don't have optional invoice and they just have main, then the e-mail would go to the main contact but the moment they add optional invoice. 
+Even if main contact is already there linked with that matter, the invoice invoices would start going to the option invoice contact right? So this is the rule that we have implemented so. 
+How we are going to how time solve selects which e-mail to be used for invoice for sending invoice. I think in the migration logic we should also implement these rules that if check if there is a contact associated with a particular matter if we. 
+Have main and if you also have option invoice then. 
+Under Nextgen select e-mail recipient for invoices, we should be putting the e-mail for the option invoice contact and if that is not available then we should be putting the e-mail for the main contact. 
+
+ 
+Shahid Ali   40:16 
+Hey Ravi, I think if we turn it off then there is no contact. If we turn it on then it will only display the main contact, no other contact e-mail, right Ravi? 
+
+ 
+Ravi Jani   40:27 
+It yeah. So again, because it's associated with the client, what system is doing, it's trying to pull in the e-mail address from that client associated. So even though you turn it off, the the e-mail address is not going to go anywhere. The only thing will happen here would be. 
+You are not sending. You would not be able to send that e-mail to the primary e-mail address. That's the only thing will happen. 
+
+ 
+Emad Suria   40:53 
+So in that case, uh, who will receive the Uh invoice? 
+
+ 
+Ravi Jani   40:57 
+If there is any additional party that you have enabled, if you have added any additional e-mail addresses, those will receive emails. If none of the value is supplied, then e-mail simply will not go out. 
+
+ 
+Emad Suria   41:12 
+OK. 
+
+ 
+Shahid Ali   41:30 
+So, so what's the take on it? 
+
+ 
+Emad Suria   41:35 
+So what? What's your opinion on this? 
+
+ 
+Shoaib Mehmood   41:42 
+Uh, sorry, can you recap? I was actually responding to Brian. 
+
+ 
+Emad Suria   41:49 
+Yeah, Mike, uh. 
+
+ 
+Shahid Ali   41:50 
+Are we going to fill this a client primary e-mail address or not? And secondly, if not, then the scenario Simav mentioned the hierarchy in our system. 
+
+ 
+Shoaib Mehmood   42:00 
+The the hierarchy where we have main contact and then optional invoice, right? 
+
+ 
+Shahid Ali   42:01 
+Hello. 
+
+ 
+Emad Suria   42:05 
+Yes, yeah, an optional one gets the precedence if e-mail is provided for them. 
+
+ 
+Shoaib Mehmood   42:11 
+So I think we should follow the same. 
+If optional invoice is specified, then we set optional invoice as the primary contact. 
+
+ 
+Emad Suria   42:15 
+Yes. 
+So client's primary e-mail would be. 
+
+ 
+Shahid Ali   42:21 
+Then this option will be disabled. 
+
+ 
+Shoaib Mehmood   42:24 
+Sorry. 
+
+ 
+Emad Suria   42:25 
+Sorry, Shahid, come again. 
+
+ 
+Shahid Ali   42:27 
+Then then we don't need to fill this in field client primary e-mail because that is better level setting right? So this field will be disabled so no e-mail address will be stored. 
+
+ 
+Shoaib Mehmood   42:39 
+Why? 
+
+ 
+Shahid Ali   42:42 
+Because we don't have a, we are not storing it because we are going to follow the project's settings in time solver right for the e-mail. Then this information is only for the client. 
+
+ 
+Shoaib Mehmood   42:51 
+Correct. But then this is also a matter level setting, yeah. 
+
+ 
+Emad Suria   42:53 
+But this is also meta level settings, right? 
+
+ 
+Shahid Ali   42:58 
+Setting is a meta level but it address is client e-mail address. 
+We cannot store the method ID that will be the related party or any other address that that service. 
+
+ 
+Shoaib Mehmood   43:09 
+So, so Shahid. 
+I think I I mean you should not focus on the label, whether it's client or matter. You should focus on the context, the full context in which this field is being used. So if this field is being used to specify like who receives invoice emails. 
+Then we should try to mimic the same behavior that the customers have in time solved. So if they were an option invoice contact who were on the recipient list for invoice emails. 
+They should continue to be on that recipient list. 
+
+ 
+Shahid Ali   43:53 
+They will be Shoaib. No, no Shoaib. We are talking about only this particular field that is called client e-mail. The question is we are going to enable it or not. 
+
+ 
+Shoaib Mehmood   43:53 
+Does that make sense? 
+Yeah, I mean, so if I understand you correctly, you are saying that in TimeSolv at the matter level, we don't usually have these recipients specified on on invoice settings tab, right? They are specified at the time of invoice creation, so we should do the same. 
+
+ 
+Shahid Ali   44:23 
+Uh, OK uh in in. 
+We actually we have to populate this field or not. That is the one question. 
+
+ 
+Shoaib Mehmood   44:34 
+If if you don't populate it, what happens then? So if if you don't populate it, I don't think Nysten will be able to specify recipients for invoices. 
+
+ 
+Emad Suria   44:34 
+OK. What happens? Yeah, that's the question. 
+
+ 
+Shahid Ali   44:36 
+So. 
+Play. 
+No, no, there is nothing issue. There is no issue. We just need a OK are we going to fill it or not 'cause it is asking for the client primary e-mail address. 
+
+ 
+Shoaib Mehmood   44:47 
+Yeah. 
+
+ 
+Emad Suria   44:49 
+No Nishay, we have to understand if we are not populating that then how what other field are we populating for from which they can they would be next Gen. would be able to send the e-mail to the same person for that customer. 
+
+ 
+Shoaib Mehmood   44:54 
+Yeah. 
+
+ 
+Emad Suria   45:07 
+Uh in next Gen. So we have to make sure that uh uh whoever the client is and if the invoices are going to a particular contact then in next Gen. 
+
+ 
+Shoaib Mehmood   45:13 
+I I would suggest. 
+I. 
+I would suggest we we do some testing. So in in times I'll create a scenario where you have main contact and you have optional invoice contact and then you have additional emails right? And then try generating an invoice and see like how the two and the CC and all the different recipients are being set. 
+
+ 
+Emad Suria   45:19 
+Yes. 
+
+ 
+Shoaib Mehmood   45:38 
+And then try to emulate that behavior in next Gen. See what configuration lets you achieve that same behavior that you were seeing in time solve. So if you need to set the primary client. 
+Contact in order to simulate that same behavior in action, then you will probably have to do that. So and and we can we can take a look at it together. So Shahid, when you have some time, let's take a look at it because this is really important. 
+We need to make sure. 
+
+ 
+Shahid Ali   46:10 
+No, no, I'm not going to do that. That is FN is going to test it and verify it. 
+
+ 
+Shoaib Mehmood   46:14 
+Right. OK. Whoever is actually working on that, yeah, that's fine. So yeah, my, my, my concern is, I mean, the behavior should remain the same from the customer's perspective. 
+The the the settings may be, uh, differently laid out between the two systems, but the end result that's important to us. 
+
+ 
+Shahid Ali   46:41 
+Yeah, we will reconsider it after the feedback. 
+
+ 
+Shoaib Mehmood   46:46 
+Yep. 
+
+ 
+Shahid Ali   46:46 
+OK. Are we do we have still time? 
+
+ 
+Ravi Jani   46:53 
+I'm gonna have to drop in next 5 minutes. 
+
+ 
+Emad Suria   46:54 
+Yeah, I think, yeah, we we can stop here and we can continue tomorrow. 
+
+ 
+Shoaib Mehmood   46:55 
+I don't think so. 
+Yep. 
+
+ 
+Shahid Ali   47:02 
+Re share me the meeting invites. 
+
+ 
+Emad Suria   47:06 
+OK. 
+Thank you. 
+
+ 
+Shoaib Mehmood   47:11 
+All right then. Thank you. 
+
+ 
+Shahid Ali   47:11 
+OK. Thank you. Bye. 
+
+ 
+Shoaib Mehmood   47:14 
+Bye. 
+
+ 
+Emad Suria   47:15 
+Bye. 
+
+ 
+Emad Suria stopped transcription 

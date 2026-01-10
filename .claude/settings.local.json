@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(meeting-to-minutes)",
+      "Bash(cat:*)",
+      "Skill(jira-ticket-writer)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
