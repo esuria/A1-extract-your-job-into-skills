@@ -2,6 +2,8 @@
 
 4 Claude Code skills automating repetitive cognitive tasks from an EM's daily workflow.
 
+**[Watch Demo Video](https://www.loom.com/share/1ea35ff5852c4c8486c77c3e3eb4e04a)**
+
 ## Skills Summary
 
 | Skill | Replaces | Time Saved | Quality Improvement |

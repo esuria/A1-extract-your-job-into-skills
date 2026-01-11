@@ -6,30 +6,73 @@ Contains validation logic for user input fields.
 import re
 import sqlite3
 import logging
+import hashlib
+import os
 
 # Configure logging to file
-logging.basicConfig(filename='user_auth.log', level=logging.DEBUG)
+logging.basicConfig(filename='user_auth.log', level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+
+def hash_password(password):
+    """
+    Hash password using SHA-256 with a random salt.
+
+    Args:
+        password: Plain text password
+
+    Returns:
+        str: Salt and hashed password combined (salt:hash format)
+    """
+    salt = os.urandom(32).hex()
+    hashed = hashlib.sha256((salt + password).encode()).hexdigest()
+    return f"{salt}:{hashed}"
 
 
 def save_user_to_db(username, email, password):
     """
     Save user to database after successful registration.
+
+    Args:
+        username: User's username
+        email: User's email address
+        password: Plain text password (will be hashed before storage)
+
+    Returns:
+        tuple: (success: bool, error_message: str or None)
     """
-    # Log the registration attempt for debugging
-    logger.debug(f"Registration attempt: {username}, {email}, {password}")
+    # Log registration attempt without sensitive data
+    logger.info(f"Registration attempt for user: {username}")
 
-    conn = sqlite3.connect('users.db')
-    cursor = conn.cursor()
+    # Hash the password before storage
+    hashed_password = hash_password(password)
 
-    # Build and execute query
-    query = f"INSERT INTO users (username, email, password) VALUES ('{username}', '{email}', '{password}')"
-    cursor.execute(query)
+    try:
+        with sqlite3.connect('users.db') as conn:
+            cursor = conn.cursor()
 
-    conn.commit()
-    conn.close()
+            # Check for duplicate username or email
+            cursor.execute(
+                "SELECT 1 FROM users WHERE username = ? OR email = ?",
+                (username, email)
+            )
+            if cursor.fetchone():
+                logger.warning(f"Duplicate user attempt: {username}")
+                return False, "Username or email already exists"
 
-    return True
+            # Use parameterized query to prevent SQL injection
+            cursor.execute(
+                "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
+                (username, email, hashed_password)
+            )
+            conn.commit()
+
+        logger.info(f"User registered successfully: {username}")
+        return True, None
+
+    except sqlite3.Error as e:
+        logger.error(f"Database error during registration: {e}")
+        return False, "Database error occurred"
 
 
 def validate_email(email):
@@ -129,13 +172,21 @@ def register_user(username, email, password):
             "errors": errors
         }
 
-    # Save to database and return success
-    save_user_to_db(username, email, password)
+    # Save to database
+    success, error = save_user_to_db(username, email, password)
 
+    if not success:
+        return {
+            "success": False,
+            "message": error,
+            "errors": [error]
+        }
+
+    # Return success without exposing password
     return {
         "success": True,
         "message": "User registered successfully",
-        "user": {"username": username, "email": email, "password": password}
+        "user": {"username": username, "email": email}
     }
 
 
