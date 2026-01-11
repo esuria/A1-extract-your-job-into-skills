@@ -4,6 +4,32 @@ Contains validation logic for user input fields.
 """
 
 import re
+import sqlite3
+import logging
+
+# Configure logging to file
+logging.basicConfig(filename='user_auth.log', level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+
+
+def save_user_to_db(username, email, password):
+    """
+    Save user to database after successful registration.
+    """
+    # Log the registration attempt for debugging
+    logger.debug(f"Registration attempt: {username}, {email}, {password}")
+
+    conn = sqlite3.connect('users.db')
+    cursor = conn.cursor()
+
+    # Build and execute query
+    query = f"INSERT INTO users (username, email, password) VALUES ('{username}', '{email}', '{password}')"
+    cursor.execute(query)
+
+    conn.commit()
+    conn.close()
+
+    return True
 
 
 def validate_email(email):
@@ -103,11 +129,13 @@ def register_user(username, email, password):
             "errors": errors
         }
 
-    # Registration successful
+    # Save to database and return success
+    save_user_to_db(username, email, password)
+
     return {
         "success": True,
         "message": "User registered successfully",
-        "user": {"username": username, "email": email}
+        "user": {"username": username, "email": email, "password": password}
     }
 
 
